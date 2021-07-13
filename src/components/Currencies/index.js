@@ -5,30 +5,17 @@ import Currency from './Currency';
 import './style.scss';
 
 export default function Currencies({ currencies }) {
+  // ici on veut passer d'un tableau d'objet à un tableau d'élément JSX
+  // eslint-disable-next-line arrow-body-style
+  const currencyList = currencies.map((currency) => {
+    return <Currency key={currency.name} name={currency.name} />;
+  });
+
   return (
     <div className="currencies">
       <p className="currencies__title">Currencies</p>
       <ul className="currencies__list">
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
-        <Currency />
+        {currencyList}
       </ul>
     </div>
   );
