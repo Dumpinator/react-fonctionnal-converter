@@ -1,0 +1,17 @@
+@use 'src/styles/vars' as v;
+
+.amount {
+  background-color: v.$color-light;
+  color: v.$color-primary;
+  text-align: center;
+  padding: v.$gutter * 2;
+  &__value {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: v.$gutter / 2;
+  }
+  &__currency {
+    font-weight: 300;
+    font-size: 1.2em;
+  }
+}
