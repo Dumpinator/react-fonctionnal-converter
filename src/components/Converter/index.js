@@ -42,8 +42,8 @@ export default class Converter extends React.Component {
   // des propriétés de class. Le state se déclare donc comme ceci
   state = {
     open: true,
-    baseAmount: 10,
-    currency: 'Australian Dollar',
+    baseAmount: 1,
+    currency: 'United States Dollar',
   }
 
   // cette fonction est en charge de changer la valeur "open" du state
@@ -71,6 +71,16 @@ export default class Converter extends React.Component {
   render() {
     const { open, baseAmount, currency } = this.state;
 
+    // ici on va chercher dans le tableau de currenciesData
+    // l'objet qui aura la propriété "name" égale à "currency" du state
+    const foundCurrency = currenciesData.find((money) => {
+      console.log(money.name === currency);
+      return money.name === currency;
+    });
+
+    // const value = parseFloat((foundCurrency.rate * baseAmount).toFixed(2));
+    const value = Math.round((foundCurrency.rate * baseAmount) * 100) / 100;
+
     return (
       <div className="converter">
         {/* React.createElement(Header, { baseAmount: 1 }) */}
@@ -84,7 +94,7 @@ export default class Converter extends React.Component {
           sinon on s'arrête
         */}
         {open && <Currencies currencies={currenciesData} /> }
-        <Amount value={1.09} currency={currency} />
+        <Amount value={value} currency={currency} />
       </div>
     );
   }
