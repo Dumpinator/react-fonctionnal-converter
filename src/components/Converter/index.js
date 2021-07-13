@@ -1,15 +1,17 @@
 import React from 'react';
 
+import Header from 'src/components/Header';
+import Currencies from 'src/components/Currencies';
+import Amount from 'src/components/Amount';
+
 import './style.scss';
 
 export default function Converter() {
   return (
     <div className="converter">
-      <header>Header</header>
-      <ul>
-        <li>Currencies</li>
-      </ul>
-      <footer>Amount</footer>
+      <Header />
+      <Currencies />
+      <Amount />
     </div>
   );
 }
