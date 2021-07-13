@@ -3,6 +3,7 @@ import React from 'react';
 import Header from 'src/components/Header';
 import Currencies from 'src/components/Currencies';
 import Amount from 'src/components/Amount';
+import Toggler from 'src/components/Toggler';
 
 // import des données
 import currenciesData from 'src/data/currencies';
@@ -43,7 +44,8 @@ export default class Converter extends React.Component {
     open: true,
   }
 
-  handleOnClickToggle = () => {
+  // cette fonction est en charge de changer la valeur "open" du state
+  setOpen = () => {
     const { open } = this.state;
 
     // ici on utilise une des propriété des fonctions flêchée. Ces dernières
@@ -71,7 +73,7 @@ export default class Converter extends React.Component {
       <div className="converter">
         {/* React.createElement(Header, { baseAmount: 1 }) */}
         <Header baseAmount={1} />
-        <button type="button" onClick={this.handleOnClickToggle}>Toggle List</button>
+        <Toggler onClickButton={this.setOpen} />
         {/*
           en JSX on peut faire de l'affichage conditionnel
           pour cela on utilise l'operateur conditionnel &&
