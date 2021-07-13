@@ -42,6 +42,8 @@ export default class Converter extends React.Component {
   // des propriétés de class. Le state se déclare donc comme ceci
   state = {
     open: true,
+    baseAmount: 10,
+    currency: 'Australian Dollar',
   }
 
   // cette fonction est en charge de changer la valeur "open" du state
@@ -67,12 +69,12 @@ export default class Converter extends React.Component {
   // pour retourner le JSX
   // à chaque fois que le state change on réexécute la fonction render
   render() {
-    const { open } = this.state;
+    const { open, baseAmount, currency } = this.state;
 
     return (
       <div className="converter">
         {/* React.createElement(Header, { baseAmount: 1 }) */}
-        <Header baseAmount={1} />
+        <Header baseAmount={baseAmount} />
         <Toggler onClickButton={this.setOpen} />
         {/*
           en JSX on peut faire de l'affichage conditionnel
@@ -82,7 +84,7 @@ export default class Converter extends React.Component {
           sinon on s'arrête
         */}
         {open && <Currencies currencies={currenciesData} /> }
-        <Amount value={1.09} currency="United States Dollar" />
+        <Amount value={1.09} currency={currency} />
       </div>
     );
   }
