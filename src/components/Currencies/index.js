@@ -8,7 +8,10 @@ export default function Currencies({ currencies }) {
   // ici on veut passer d'un tableau d'objet à un tableau d'élément JSX
   // eslint-disable-next-line arrow-body-style
   const currencyList = currencies.map((currency) => {
-    return <Currency key={currency.name} name={currency.name} />;
+    // return React.createElement(Currency, { key: currency.name, ...currency });
+    // avec le spread operator on vient déverser les propriétés d'un objet dans un autre
+    // en gros un c/c de propriétés
+    return <Currency key={currency.name} {...currency} />;
   });
 
   return (
@@ -31,6 +34,5 @@ Currencies.propTypes = {
   // on sait que le tableau contient des objets et on connait la forme de ces objets
   currencies: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    rate: PropTypes.number.isRequired,
   })).isRequired,
 };
