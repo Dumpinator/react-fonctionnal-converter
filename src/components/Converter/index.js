@@ -12,7 +12,7 @@ export default function Converter() {
       {/* React.createElement(Header, { baseAmount: 1 }) */}
       <Header baseAmount={1} />
       <Currencies />
-      <Amount />
+      <Amount value={1.09} currency="United States Dollar" />
     </div>
   );
 }
