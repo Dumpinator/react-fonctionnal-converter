@@ -6,13 +6,10 @@ import './style.scss';
 
 export default function Currencies({ currencies }) {
   // ici on veut passer d'un tableau d'objet à un tableau d'élément JSX
-  // eslint-disable-next-line arrow-body-style
-  const currencyList = currencies.map((currency) => {
-    // return React.createElement(Currency, { key: currency.name, ...currency });
-    // avec le spread operator on vient déverser les propriétés d'un objet dans un autre
-    // en gros un c/c de propriétés
-    return <Currency key={currency.name} {...currency} />;
-  });
+  // return React.createElement(Currency, { key: currency.name, ...currency });
+  // avec le spread operator on vient déverser les propriétés d'un objet dans un autre
+  // en gros un c/c de propriétés
+  const currencyList = currencies.map((currency) => <Currency key={currency.name} {...currency} />);
 
   return (
     <div className="currencies">
