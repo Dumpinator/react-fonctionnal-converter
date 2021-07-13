@@ -9,7 +9,8 @@ import './style.scss';
 export default function Converter() {
   return (
     <div className="converter">
-      <Header />
+      {/* React.createElement(Header, { baseAmount: 1 }) */}
+      <Header baseAmount={1} />
       <Currencies />
       <Amount />
     </div>
