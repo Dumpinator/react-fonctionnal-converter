@@ -14,14 +14,51 @@ import './style.scss';
 // il faut pour cela transformer notre composant fonction
 // en composant class
 export default class Converter extends React.Component {
+  // /!\ CODE LEGACY
   // pour pouvoir créer un state, on doit passer par le constructor
-  constructor(props) {
-    super(props);
-    // le state est un objet où on va pouvoir stocker des données internes
-    // au composant
-    this.state = {
-      open: true,
-    };
+  // constructor(props) {
+  //   super(props);
+  //   // le state est un objet où on va pouvoir stocker des données internes
+  //   // au composant
+  //   this.state = {
+  //     open: true,
+  //   };
+
+  //   // on va donner le contexte d'exécution de la class à la méthode handleOnClickToggle
+  //   this.handleOnClickToggle = this.handleOnClickToggle.bind(this);
+  // }
+
+  // handleOnClickToggle() {
+  //   console.log('click');
+  //   // quand on a des méthodes de class, on se retrouve avec des fonctions
+  //   // et les fonction ES5 ont leur propre contexte d'exécution. Ici le this n'est pas le
+  //   // même que celui de la class, donc "state" n'existe pas sur le contexte de la fonction
+  //   this.state = false;
+  // }
+
+  // NOUVEAU CODE
+  // grâce au plugin babel-class-properties on peut déclarer
+  // des propriétés de class. Le state se déclare donc comme ceci
+  state = {
+    open: true,
+  }
+
+  handleOnClickToggle = () => {
+    const { open } = this.state;
+
+    // ici on utilise une des propriété des fonctions flêchée. Ces dernières
+    // ne redéfinissent pas de contexte. Le this est donc le même que le contexte parent
+    // on peut donc placer dans une propriété de class, une fonction flêchée
+    // => pas de bind
+
+    // On ne doit pas changer les valeur du state directement
+    // React ne sera pas notifier => il ne fera pas de nouveau render
+    // INTERDIT this.state = false;
+    // il faut utiliser la méthode setState
+    this.setState({
+      open: !open,
+    });
+    // console.log(this.state);
   }
 
   // dans un composant class, il faut passer par la méthode render
@@ -34,7 +71,14 @@ export default class Converter extends React.Component {
       <div className="converter">
         {/* React.createElement(Header, { baseAmount: 1 }) */}
         <Header baseAmount={1} />
-        {/* en JSX on peut faire de l'affichage conditionnel */}
+        <button type="button" onClick={this.handleOnClickToggle}>Toggle List</button>
+        {/*
+          en JSX on peut faire de l'affichage conditionnel
+          pour cela on utilise l'operateur conditionnel &&
+          quand la valeur à gauche de l'opérateur vaut "true"
+          alors on traite la valeur de droite
+          sinon on s'arrête
+        */}
         {open && <Currencies currencies={currenciesData} /> }
         <Amount value={1.09} currency="United States Dollar" />
       </div>
