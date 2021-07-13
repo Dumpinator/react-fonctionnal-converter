@@ -65,11 +65,8 @@ export default class Converter extends React.Component {
     // console.log(this.state);
   }
 
-  // dans un composant class, il faut passer par la méthode render
-  // pour retourner le JSX
-  // à chaque fois que le state change on réexécute la fonction render
-  render() {
-    const { open, baseAmount, currency } = this.state;
+  makeConversion = () => {
+    const { baseAmount, currency } = this.state;
 
     // ici on va chercher dans le tableau de currenciesData
     // l'objet qui aura la propriété "name" égale à "currency" du state
@@ -78,8 +75,18 @@ export default class Converter extends React.Component {
       return money.name === currency;
     });
 
-    // const value = parseFloat((foundCurrency.rate * baseAmount).toFixed(2));
-    const value = Math.round((foundCurrency.rate * baseAmount) * 100) / 100;
+    // return parseFloat((foundCurrency.rate * baseAmount).toFixed(2));
+    return Math.round((foundCurrency.rate * baseAmount) * 100) / 100;
+  }
+
+  // dans un composant class, il faut passer par la méthode render
+  // pour retourner le JSX
+  // à chaque fois que le state change on réexécute la fonction render
+  render() {
+    const { open, baseAmount, currency } = this.state;
+
+    // on exécute la conversion et on stocke le résultat
+    const value = this.makeConversion();
 
     return (
       <div className="converter">
