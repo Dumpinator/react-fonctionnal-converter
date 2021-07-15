@@ -8,11 +8,7 @@
   &__title {
     font-weight: 700;
     font-size: 2em;
-<<<<<<< Updated upstream
-    margin-bottom: v.$gutter / 2;
-=======
     margin-bottom: div(v.$gutter, 2);
->>>>>>> Stashed changes
   }
   &__base-amount {
     font-weight: 300;

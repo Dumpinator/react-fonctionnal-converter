@@ -14,8 +14,5 @@ export default function Header({ baseAmount }) {
 
 Header.propTypes = {
   baseAmount: PropTypes.number.isRequired,
-<<<<<<< Updated upstream
 };
-=======
-};
->>>>>>> Stashed changes
+

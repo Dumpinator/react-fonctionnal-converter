@@ -2,10 +2,6 @@ const paths = require('./paths');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-<<<<<<< Updated upstream
-=======
-const Dotenv = require('dotenv-webpack');
->>>>>>> Stashed changes
 
 module.exports = {
   entry: [
@@ -26,10 +22,6 @@ module.exports = {
     },
   },
   plugins: [
-<<<<<<< Updated upstream
-=======
-    new Dotenv(),
->>>>>>> Stashed changes
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
