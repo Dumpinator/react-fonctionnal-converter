@@ -120,6 +120,15 @@ export default class Converter extends React.Component {
     // on exécute la conversion et on stocke le résultat
     const value = this.makeConversion();
 
+    const filteredCurrencies = currenciesData.filter((money) => {
+      // pour pouvoir comparer la recherche avec le nom de la devise
+      // on passe tout en minuscule pour ne pas avoir de souci avec la casse
+      const loweredName = money.name.toLowerCase();
+      const loweredSearch = search.toLowerCase();
+
+      return loweredName.includes(loweredSearch);
+    });
+
     return (
       <div className="converter">
         {/* React.createElement(Header, { baseAmount: 1 }) */}
@@ -134,7 +143,7 @@ export default class Converter extends React.Component {
         */}
         {open && (
           <Currencies
-            currencies={currenciesData}
+            currencies={filteredCurrencies}
             changeCurrency={this.setCurrency}
             inputValue={search}
             onChangeInputValue={this.setSearch}
