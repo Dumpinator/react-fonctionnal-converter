@@ -106,6 +106,29 @@ export default class Converter extends React.Component {
     return Math.round((foundCurrency.rate * baseAmount) * 100) / 100;
   }
 
+  getFilteredCurrencies = () => {
+    const { search } = this.state;
+
+    // ici quand la recherche est vide, on renvoie toutes la liste des devises
+    if (search.length === 0) {
+      return currenciesData;
+    }
+
+    const filteredCurrencies = currenciesData.filter(({ name }) => {
+      // pour pouvoir comparer la recherche avec le nom de la devise
+      // on passe tout en minuscule pour ne pas avoir de souci avec la casse
+      const loweredName = name.toLowerCase();
+      const loweredSearch = search.toLowerCase();
+
+      return loweredName.includes(loweredSearch);
+    });
+
+    return filteredCurrencies;
+
+    // version condensée
+    // return currenciesData.filter(({name}) => name.toLowerCase().includes(search.toLowerCase()));
+  }
+
   // dans un composant class, il faut passer par la méthode render
   // pour retourner le JSX
   // à chaque fois que le state change on réexécute la fonction render
@@ -120,14 +143,7 @@ export default class Converter extends React.Component {
     // on exécute la conversion et on stocke le résultat
     const value = this.makeConversion();
 
-    const filteredCurrencies = currenciesData.filter((money) => {
-      // pour pouvoir comparer la recherche avec le nom de la devise
-      // on passe tout en minuscule pour ne pas avoir de souci avec la casse
-      const loweredName = money.name.toLowerCase();
-      const loweredSearch = search.toLowerCase();
-
-      return loweredName.includes(loweredSearch);
-    });
+    const filteredCurrencies = this.getFilteredCurrencies();
 
     return (
       <div className="converter">
