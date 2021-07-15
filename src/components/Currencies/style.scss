@@ -9,8 +9,6 @@
     font-weight: 700;
     padding: v.$gutter * 1.5 v.$gutter v.$gutter;
   }
-<<<<<<< Updated upstream
-=======
   &__input {
     border: none;
     padding: v.$gutter * 1.5 v.$gutter v.$gutter;
@@ -22,7 +20,6 @@
       color: v.$color-alt;
     }
   }
->>>>>>> Stashed changes
 }
 
 .currency {
@@ -32,10 +29,8 @@
   transition: v.$transition-slow background-color;
   &:hover {
     background-color: v.$color-alt;
-<<<<<<< Updated upstream
     transition: v.$transition-fast background-color;
-=======
     transition: v.$transition-slow background-color;
->>>>>>> Stashed changes
+
   }
 }

@@ -4,8 +4,7 @@ import Currency from './Currency';
 
 import './style.scss';
 export default function Currencies({ currencies, onToggleClick }) {
-  // ici on veut passer d'un tableau d'objet à un tableau d'élément JSX
-  // eslint-disable-next-line arrow-body-style
+
   const currencyList = currencies.map((currency) => {
     // return React.createElement(Currency, { key: currency.name, ...currency });
     // avec le spread operator on vient déverser les propriétés d'un objet dans un autre
@@ -13,12 +12,17 @@ export default function Currencies({ currencies, onToggleClick }) {
     return <Currency key={currency.name} onToggleClick={onToggleClick} {...currency} />;
   });
 
+  const handleOnChange = (event) => {
+    onChangeInputValue(event.target.value);
+  };
+
   return (
     <div className="currencies">
       <input
         type="text"
         placeholder="Rechercher une devise"
         className="currencies__input"
+        //value={inputValue}
         //onChange={handleOnChange}
       />
       <ul className="currencies__list">
