@@ -4,7 +4,7 @@ import Currency from './Currency';
 
 import './style.scss';
 
-export default function Currencies({ currencies, changeCurrency }) {
+export default function Currencies({ currencies, changeCurrency, inputValue }) {
   // ici on veut passer d'un tableau d'objet à un tableau d'élément JSX
   // return React.createElement(Currency, { key: currency.name, ...currency });
   // avec le spread operator on vient déverser les propriétés d'un objet dans un autre
@@ -23,6 +23,7 @@ export default function Currencies({ currencies, changeCurrency }) {
         type="text"
         placeholder="Rechercher une devise"
         className="currencies__input"
+        value={inputValue}
       />
       <ul className="currencies__list">
         {currencyList}
@@ -43,4 +44,5 @@ Currencies.propTypes = {
     name: PropTypes.string.isRequired,
   })).isRequired,
   changeCurrency: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
 };

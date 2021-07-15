@@ -44,6 +44,7 @@ export default class Converter extends React.Component {
     open: true,
     baseAmount: 1,
     currency: 'United States Dollar',
+    search: '',
   }
 
   // cette fonction est en charge de changer la valeur "open" du state
@@ -101,7 +102,12 @@ export default class Converter extends React.Component {
   // pour retourner le JSX
   // à chaque fois que le state change on réexécute la fonction render
   render() {
-    const { open, baseAmount, currency } = this.state;
+    const {
+      open,
+      baseAmount,
+      currency,
+      search,
+    } = this.state;
 
     // on exécute la conversion et on stocke le résultat
     const value = this.makeConversion();
@@ -122,6 +128,7 @@ export default class Converter extends React.Component {
           <Currencies
             currencies={currenciesData}
             changeCurrency={this.setCurrency}
+            inputValue={search}
           />
         )}
         <Amount value={value} currency={currency} />
