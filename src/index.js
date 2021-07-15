@@ -2,9 +2,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-// == Import : local
-// Composants
-// j'adapte le point d'entrée à mon application
 import Converter from 'src/components/Converter';
 
 // == Render

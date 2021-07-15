@@ -8,7 +8,11 @@
   &__value {
     font-size: 2em;
     font-weight: 700;
+<<<<<<< Updated upstream
     margin-bottom: v.$gutter / 2;
+=======
+    margin-bottom: div(v.$gutter, 2);
+>>>>>>> Stashed changes
   }
   &__currency {
     font-weight: 300;

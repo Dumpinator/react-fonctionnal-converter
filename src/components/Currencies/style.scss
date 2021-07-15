@@ -9,6 +9,20 @@
     font-weight: 700;
     padding: v.$gutter * 1.5 v.$gutter v.$gutter;
   }
+<<<<<<< Updated upstream
+=======
+  &__input {
+    border: none;
+    padding: v.$gutter * 1.5 v.$gutter v.$gutter;
+    font-weight: 700;
+    color: v.$color-primary;
+    font-size: 1.2em;
+    &::placeholder {
+      font-weight: 500;
+      color: v.$color-alt;
+    }
+  }
+>>>>>>> Stashed changes
 }
 
 .currency {
@@ -18,6 +32,10 @@
   transition: v.$transition-slow background-color;
   &:hover {
     background-color: v.$color-alt;
+<<<<<<< Updated upstream
     transition: v.$transition-fast background-color;
+=======
+    transition: v.$transition-slow background-color;
+>>>>>>> Stashed changes
   }
 }

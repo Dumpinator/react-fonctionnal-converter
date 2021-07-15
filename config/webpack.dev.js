@@ -46,7 +46,11 @@ module.exports = merge(common, {
     clientLogLevel: 'warn',
     overlay: true,
     stats: 'minimal',
+<<<<<<< Updated upstream
     open: false,
+=======
+    open: true,
+>>>>>>> Stashed changes
     compress: true,
     hot: true,
     watchOptions: {

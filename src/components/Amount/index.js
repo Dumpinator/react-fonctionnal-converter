@@ -14,4 +14,8 @@ export default function Amount({ value, currency }) {
 Amount.propTypes = {
   value: PropTypes.number.isRequired,
   currency: PropTypes.string.isRequired,
+<<<<<<< Updated upstream
 };
+=======
+};
+>>>>>>> Stashed changes

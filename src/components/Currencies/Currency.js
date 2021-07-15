@@ -1,25 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-export default function Currency({ name, onClickCurrency }) {
-  // on prépare un handler qui sera exécuté à chaque fois qu'on clique sur le li
-  const handleOnClick = () => {
-    // ici on passe la valeur de "name" à notre props
-    // cette props contient la fonction setCurrency
-    onClickCurrency(name);
-  };
-
+export default function Currency({ name, rate, onToggleClick }) {
+  const result = Math.round((rate * 1) * 100) / 100;
   return (
-    <li
-      className="currency"
-      onClick={handleOnClick}
-    >
-      {name}
-    </li>
+    <li className="currency" value={result} onClick={() => onToggleClick(name, result)}>{name}</li>
   );
 }
 
 Currency.propTypes = {
   name: PropTypes.string.isRequired,
-  onClickCurrency: PropTypes.func.isRequired,
 };
