@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 export default function Currency({ name, onClickCurrency }) {
   // on prépare un handler qui sera exécuté à chaque fois qu'on clique sur le li
   const handleOnClick = () => {
-    onClickCurrency();
+    // ici on passe la valeur de "name" à notre props
+    // cette props contient la fonction setCurrency
+    onClickCurrency(name);
   };
 
   return (

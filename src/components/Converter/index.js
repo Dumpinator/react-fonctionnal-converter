@@ -66,21 +66,21 @@ export default class Converter extends React.Component {
   }
 
   // fonction en charge de modifier la valeur "currency" du state
-  setCurrency = () => {
-    console.log('je veux modifier la currency');
+  setCurrency = (value) => {
     // INTERDIT => React n'est pas notifié
     // this.state.currency = 'Australian Dollar';
     this.setState({
-      currency: 'Swiss Franc',
-      // on a à disposition un callback
-      // qui sera exécuté une fois que le state
-      // sera changé
-    }, () => console.log(this.state));
+      currency: value,
+    });
+    // on a à disposition un callback
+    // qui sera exécuté une fois que le state
+    // sera changé
+    // ,() => console.log(this.state)
 
     // attention setState est asynchrone
     // si on demande le state juste après
     // il sera égale au state d'avant
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   makeConversion = () => {
