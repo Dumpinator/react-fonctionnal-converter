@@ -65,6 +65,11 @@ export default class Converter extends React.Component {
     // console.log(this.state);
   }
 
+  // fonction en charge de modifier la valeur "currency" du state
+  setCurrency = () => {
+    console.log('je veux modifier la currency');
+  }
+
   makeConversion = () => {
     const { baseAmount, currency } = this.state;
 
@@ -100,7 +105,12 @@ export default class Converter extends React.Component {
           alors on traite la valeur de droite
           sinon on s'arrête
         */}
-        {open && <Currencies currencies={currenciesData} /> }
+        {open && (
+          <Currencies
+            currencies={currenciesData}
+            changeCurrency={this.setCurrency}
+          />
+        )}
         <Amount value={value} currency={currency} />
       </div>
     );
