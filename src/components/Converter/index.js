@@ -84,13 +84,21 @@ export default class Converter extends React.Component {
     // console.log(this.state);
   }
 
+  // fonction en charge de modifier la valeur de search du state
+  setSearch = (value) => {
+    this.setState({
+      search: value,
+    });
+  }
+
   makeConversion = () => {
     const { baseAmount, currency } = this.state;
 
     // ici on va chercher dans le tableau de currenciesData
     // l'objet qui aura la propriété "name" égale à "currency" du state
+    // eslint-disable-next-line arrow-body-style
     const foundCurrency = currenciesData.find((money) => {
-      console.log(money.name === currency);
+      // console.log(money.name === currency);
       return money.name === currency;
     });
 
@@ -129,6 +137,7 @@ export default class Converter extends React.Component {
             currencies={currenciesData}
             changeCurrency={this.setCurrency}
             inputValue={search}
+            onChangeInputValue={this.setSearch}
           />
         )}
         <Amount value={value} currency={currency} />
